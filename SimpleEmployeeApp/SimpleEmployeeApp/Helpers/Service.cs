@@ -1,12 +1,14 @@
-﻿using SimpleEmployeeApp.Helpers.Model;
+﻿using BetterConsoleTables;
+using SimpleEmployeeApp.Helpers.Model;
 using System.Globalization;
-using BetterConsoleTables;
 
 namespace SimpleEmployeeApp.Helpers.Service
 {
     public class Output
     {
-        public static void Message(string message, Model.Message.Type type)
+        // This function is responsible for sending output with based on the message type enum.
+        // The message type will determine the color of the output.
+        public static void Message(string message, Message.Type type)
         {
             switch (type)
             {
@@ -32,17 +34,26 @@ namespace SimpleEmployeeApp.Helpers.Service
         }
     }
 
+    // This function is the main CRUD (Create, Read, Update, and Delete) function for the Employee model.
+    // It handles all operations related to managing employee records,
+    // including creating new employee records, reading existing records, updating existing records, and deleting records.
     public class EmployeeService
     {
+        // Initiate the employee counter for EmployeeId starts from 1000
         int employeeCounter = 1000;
 
-        List<Employee> Employees = new List<Employee>();
+        // Declare the In-Memory Employee storage
+        List<Employee> Employees { get; set; }
 
         public EmployeeService()
         {
+            // This is an instantiation of the List<Employee> class, which will be used to store and perform CRUD tasks on employee records.
+            // All operations related to managing employee records such as adding, updating and deleting will be performed using this list instance.
+            // Without instantiating the class, it would not be possible to create Employee object to that class and use it.
             Employees = new List<Employee>();
         }
 
+        // This function is responsible for creating a new employee record.
         public void CreateEmployee()
         {
             try
@@ -77,6 +88,7 @@ namespace SimpleEmployeeApp.Helpers.Service
             }
         }
 
+        // This function is responsible for displaying a list of all employee records currently stored in Employees
         public void ListEmployee()
         {
             Console.Clear();
@@ -84,6 +96,7 @@ namespace SimpleEmployeeApp.Helpers.Service
             ShowAllEmployees();
         }
 
+        // This function retrieves all employee records from Employees and output them as a table
         public void ShowAllEmployees()
         {
             Table table = new Table("EmployeeId", "FullName", "BirthDate");
@@ -92,6 +105,7 @@ namespace SimpleEmployeeApp.Helpers.Service
             Output.Message(table.ToString(), Message.Type.Info);
         }
 
+        // This function is responsible for deleting an employee record from Employees
         public void DeleteEmployee()
         {
             Console.Clear();
@@ -128,6 +142,7 @@ namespace SimpleEmployeeApp.Helpers.Service
             }
         }
 
+        // This function is responsible for updating an existing employee record in Employees
         public void UpdateEmployee()
         {
             Console.Clear();
@@ -158,6 +173,8 @@ namespace SimpleEmployeeApp.Helpers.Service
             }
         }
 
+        // This function is responsible for retrieving a single employee record from Employees
+        // And will be used in other function such as delete and update.
         public Employee GetEmployee()
         {
             Employee employee = new Employee();
@@ -201,6 +218,8 @@ namespace SimpleEmployeeApp.Helpers.Service
             return employee;
         }
 
+        // This function is responsible for reading and obtaining a birth date from user input
+        // and validating it as a valid date time (dd/MM/yyyy)
         public DateTime GetBirthDate()
         {
             string strBirthDate = string.Empty;
@@ -227,6 +246,7 @@ namespace SimpleEmployeeApp.Helpers.Service
             return birthDate;
         }
 
+        // This function is responsible for reading and obtaining the user's input for a full name
         public string GetFullName()
         {
             string fullName = string.Empty;
@@ -250,6 +270,7 @@ namespace SimpleEmployeeApp.Helpers.Service
             return fullName;
         }
 
+        // This function is responsible for checking for duplicate employee records based on the full name parameter
         public bool IsDuplicate(string fullName)
         {
             return Employees.Any(e => e.FullName.ToLower() == fullName.ToLower());
