@@ -8,7 +8,7 @@ A simple in-memory CRUD application for an Employee model.
 - List Employee
 
 ## Usage
-1. Clone the repository => git clone https://github.com/yourusername/employee-crud-app.git
+1. Clone the repository => git clone https://github.com/hernanda-git/employee-crud-app.git
 2. Open the project in Visual Studio 2022
 3. Build and run the application
 4. Select an option from the menu to perform the corresponding task
