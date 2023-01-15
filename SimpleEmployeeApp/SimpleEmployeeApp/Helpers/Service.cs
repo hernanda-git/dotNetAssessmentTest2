@@ -35,8 +35,6 @@ namespace SimpleEmployeeApp.Helpers.Service
     }
 
     // This function is the main CRUD (Create, Read, Update, and Delete) function for the Employee model.
-    // It handles all operations related to managing employee records,
-    // including creating new employee records, reading existing records, updating existing records, and deleting records.
     public class EmployeeService
     {
         // Initiate the employee counter for EmployeeId starts from 1000
@@ -84,7 +82,6 @@ namespace SimpleEmployeeApp.Helpers.Service
             catch (Exception ex)
             {
                 Output.Message($"Error: {ex.Message}", Message.Type.Error);
-
             }
         }
 
@@ -113,7 +110,7 @@ namespace SimpleEmployeeApp.Helpers.Service
             {
 
                 ShowAllEmployees();
-                Output.Message("\nEnter which EmployeeId (based on the data) you want to delete: ", Message.Type.Info);
+                Output.Message("\nEnter which EmployeeId (based on the data) you want to delete: ", Message.Type.Default);
 
                 Employee employee = GetEmployee();
 
@@ -174,7 +171,7 @@ namespace SimpleEmployeeApp.Helpers.Service
         }
 
         // This function is responsible for retrieving a single employee record from Employees
-        // And will be used in other function such as delete and update.
+        // and will be used in other function such as delete and update.
         public Employee GetEmployee()
         {
             Employee employee = new Employee();
