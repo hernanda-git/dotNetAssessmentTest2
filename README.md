@@ -1,3 +1,25 @@
+# .NET Assessment Test 2 by AKASIA
+
+## The Tasks:
+- Create Simple In-Memory CRUD Employee Application (simple console / command apps)
+
+Data:
+EmployeeId, string
+FullName, string
+BIrthDate, Date
+
+Requirement:
+- Key functionality
+- Adding new data (can be hardcoded to save development time)
+- Display list of data
+- Remove / Delete data, for example delete employee 1003 – Amir from list of employees
+
+Program must have:
+- Comment (short description to describe method)
+- Variable
+- Validation (null handling, date handling, duplicate data handling)
+- Error handling (exception)
+
 # Employee CRUD Application
 A simple in-memory CRUD application for an Employee model.
 
